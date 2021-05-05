@@ -1,0 +1,109 @@
+USE [OMDb]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 5/3/2021 4:28:54 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Movies]    Script Date: 5/3/2021 4:28:55 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Movies](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](max) NULL,
+	[Year] [nvarchar](max) NULL,
+	[Rated] [nvarchar](max) NULL,
+	[Released] [nvarchar](max) NULL,
+	[Runtime] [nvarchar](max) NULL,
+	[Genre] [nvarchar](max) NULL,
+	[Director] [nvarchar](max) NULL,
+	[Writer] [nvarchar](max) NULL,
+	[Actors] [nvarchar](max) NULL,
+	[Plot] [nvarchar](max) NULL,
+	[Language] [nvarchar](max) NULL,
+	[Country] [nvarchar](max) NULL,
+	[Awards] [nvarchar](max) NULL,
+	[Poster] [nvarchar](max) NULL,
+	[Metascore] [nvarchar](max) NULL,
+	[imdbRating] [real] NOT NULL,
+	[imdbVotes] [int] NOT NULL,
+	[imdbID] [nvarchar](max) NULL,
+	[Type] [nvarchar](max) NULL,
+	[DVD] [nvarchar](max) NULL,
+	[BoxOffice] [nvarchar](max) NULL,
+	[Production] [nvarchar](max) NULL,
+	[Website] [nvarchar](max) NULL,
+	[Response] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Movies] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Ratings]    Script Date: 5/3/2021 4:28:55 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Ratings](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Source] [nvarchar](max) NULL,
+	[Value] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Ratings] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[SearchMovies]    Script Date: 5/3/2021 4:28:55 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SearchMovies](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Movies] [nvarchar](max) NULL,
+	[DateSearched] [datetime] NULL CONSTRAINT [DF_SearchMovies_DateSearched]  DEFAULT (getdate()),
+ CONSTRAINT [PK_SearchMovies] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+INSERT [dbo].[__EFMigrationsHistory] ([MigrationId], [ProductVersion]) VALUES (N'20210502194052_MyFirstMigration', N'5.0.5')
+GO
+SET IDENTITY_INSERT [dbo].[Movies] ON 
+
+GO
+INSERT [dbo].[Movies] ([ID], [Title], [Year], [Rated], [Released], [Runtime], [Genre], [Director], [Writer], [Actors], [Plot], [Language], [Country], [Awards], [Poster], [Metascore], [imdbRating], [imdbVotes], [imdbID], [Type], [DVD], [BoxOffice], [Production], [Website], [Response]) VALUES (5, N'Black List', N'1984', N'N/A', N'08 Aug 1984', N'83 mins', N'Action', N'Alain Bonnot', N'Alain Bonnot, André G. Brunelin, Marie-Thérèse Cuny, Gérald Moreau (novel)', N'Annie Girardot, Paul Crauchet, Bernard Brieux, Sandrine Dumas', N'Jacqui, David and Nathalie are persuaded by a barely known little criminal to do a hold-up in a bank. But they''re squealed on, just used as diversion while a group of professional criminals...', N'French', N'France', N'N/A', N'https://m.media-amazon.com/images/M/MV5BN2JlZjFjNjQtNzhlNS00NzA5LTg4NDgtNjA5MTE0YWM2NDlmXkEyXkFqcGdeQXVyMjE4NzY3Mw@@._V1_SX300.jpg', N'N/A', 5.7, 129, N'tt0087627', N'movie', N'N/A', N'N/A', N'N/A', N'N/A', N'True')
+GO
+INSERT [dbo].[Movies] ([ID], [Title], [Year], [Rated], [Released], [Runtime], [Genre], [Director], [Writer], [Actors], [Plot], [Language], [Country], [Awards], [Poster], [Metascore], [imdbRating], [imdbVotes], [imdbID], [Type], [DVD], [BoxOffice], [Production], [Website], [Response]) VALUES (8, N'Money Heist', N'1985', N'N/A', N'08 Aug 1985', N'90 mins', N'Action', N'Alain Bonnot', N'Alain Bonnot, André G. Brunelin, Marie-Thérèse Cuny, Gérald Moreau (novel)', N'Annie Girardot, Paul Crauchet, Bernard Brieux, Sandrine Dumas', N'Jacqui, David and Nathalie are persuaded by a barely known little criminal to do a hold-up in a bank. But they''re squealed on, just used as diversion while a group of professional criminals...', N'English', N'United Kingdom', N'N/A', N'https://images.app.goo.gl/5XWKwYeRy8pnx2TAA', N'N/A', 5.8, 130, N'bbb12345', N'movie', N'N/A', N'N/A', N'N/A', N'N/A', N'True')
+GO
+SET IDENTITY_INSERT [dbo].[Movies] OFF
+GO
+SET IDENTITY_INSERT [dbo].[SearchMovies] ON 
+
+GO
+INSERT [dbo].[SearchMovies] ([ID], [Movies], [DateSearched]) VALUES (1, N'Twenty Four Hours', CAST(N'2021-05-02 20:57:21.553' AS DateTime))
+GO
+INSERT [dbo].[SearchMovies] ([ID], [Movies], [DateSearched]) VALUES (2, N'Money Heist', CAST(N'2021-05-02 21:07:06.217' AS DateTime))
+GO
+INSERT [dbo].[SearchMovies] ([ID], [Movies], [DateSearched]) VALUES (3, N'OKOTAYELOLU', CAST(N'2021-05-03 14:26:20.233' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[SearchMovies] OFF
+GO
